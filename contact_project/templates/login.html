@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login Page</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'assets/vendors/mdi/css/materialdesignicons.min.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+    
+
+#login-form{
+    height: 440px;
+    width: 350px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    box-shadow: 2px 2px 5px gray;
+    padding: 30px;
+}
+#login-form *{
+    font-family: 'Poppins',sans-serif;
+}
+
+#login-form label{
+    display: block;
+    margin-top: 30px;
+    font-size: 16px;
+}
+#login-form input{
+    display: block;
+    height: 50px;
+    width: 100%;
+    border: 1px solid lightgray;
+    border-radius: 50px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+    outline: none;
+}
+#login-form ::placeholder{
+    color: gray;
+}
+#login-form button{
+    margin-top: 30px;
+    width: 100%;
+    background-color: lightseagreen;
+    color: white;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+}
+#login-form a{
+    text-decoration: none;
+    color: black;
+}
+#login-form .multicolor-text {
+            color: lightseagreen;
+            font-size: 30px;
+            font-weight: 600;
+            line-height: 32px;
+            text-align: center;
+}
+</style>
+</head>
+<body>
+    {% if messages %}
+    <div class="messages">
+      {% for message in messages %}
+        <div class="alert alert-danger">
+          {{ message }}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+    <form id="login-form" action="" method="POST">
+        {% csrf_token %}
+        <h3 class="multicolor-text">LOGIN</h3>
+        <label for="username">Username</label>
+        <input type="text" placeholder="Username" id="username" name="Username">
+        <label for="password">Password</label>
+        <input type="password" placeholder="Password" id="password" style="margin-bottom: 5px;" name="Password">
+        
+        {% if messages %}
+    
+      {% for message in messages %}
+        
+      <p style="color: rgba(244, 110, 110, 0.972);"><i class="mdi mdi-alert-circle"></i>{{ message }}</p> 
+        
+      {% endfor %}
+    
+  {% endif %}
+        <a href="">Forgot Password?</a>
+        <button>Log In</button>
+    </form>
+    <i class="fa-solid fa-circle-exclamation"></i>
+</body>
+</html>
